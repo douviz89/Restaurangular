@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { QuickLunchService } from '../services/quick-lunch.service'; // const qls = new QuickLunchService()
 import { Food } from '../models/food.interface';
 @Component({
-  selector: 'main-dash',
+  selector: 'app-main-dash',
   templateUrl: './main-dash.component.html',
   styleUrls: ['./main-dash.component.css']
 })
 export class MainDashComponent implements OnInit {
   cards = [
     { title: 'Burgers', cols: 2, rows: 1, id: 'brg' },
-    { title: 'Galettes/crêpes', cols: 2, rows: 2, id: 'glt' },
+    { title: 'Galettes/crêpes', cols: 2, rows: 1, id: 'glt' },
     { title: 'Pizzas', cols: 2, rows: 1, id: 'pzz'}
   ];
 

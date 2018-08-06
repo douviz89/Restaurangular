@@ -8,7 +8,7 @@ export class QuickLunchService {
 
   burgers: Food[] = [
     { id: 1, title: 'Hamburger', description: 'steak, tomate, salade iceberg, oigons rouges, sauce maison', price: 6.40 },
-    { id: 2, title: 'Cheeseburger', description: 'steak, cheddar, tomate, salade iceberg, oignons rouges, sauce maison', price: 7.00 },
+    { id: 2, title: 'Cheeseburger', description: 'steak, cheddar, tomate, salade iceberg, oignons rouges, sauce maison', price: 7.00},
     { id: 3, title: 'Burger du moment', price: 7.00 }
   ];
 

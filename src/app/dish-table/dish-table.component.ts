@@ -3,7 +3,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { DishTableDataSource } from './dish-table-datasource';
 
 @Component({
-  selector: 'dish-table',
+  selector: 'app-dish-table',
   templateUrl: './dish-table.component.html',
   styleUrls: ['./dish-table.component.css']
 })
