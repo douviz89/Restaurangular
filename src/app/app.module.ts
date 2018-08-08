@@ -2,10 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule,
@@ -21,8 +18,15 @@ import {
   MatSortModule,
   MatDividerModule,
   MatDatepickerModule,
-  MatFormFieldModule
+  MatInputModule,
+  MatFormFieldModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MAT_DATE_LOCALE
 } from '@angular/material';
+
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CarteComponent } from './carte/carte.component';
 import { ReserveComponent } from './reserve/reserve.component';
@@ -67,10 +71,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

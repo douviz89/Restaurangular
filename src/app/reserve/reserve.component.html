@@ -1,7 +1,64 @@
-<form>
+<div *ngIf="!isScheduledOK">
+  <!-- Angular material form : correpond exactement au formulaire créé dans le fichier TS-->
+  <form [formGroup]="reservationForm" (submit)="saveReservation()">
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choisir une date" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" [startAt]="date"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Choisir l'heure" formControlName="time">
+        <mat-option *ngFor="let to of timeOptions" [value]="to">
+          {{ to }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Combien de personnes" formControlName="people">
+        <mat-option *ngFor="let po of peopleOptions" [value]="po">
+          {{ po }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button type="submit" >Confirmer l'horaire</button>
+  </form>
+  <!-- {{ reservationForm.value | json }} -->
+</div>
+
+
+<div *ngIf="isScheduledOK">
+  <!-- Driver Form : Angular va créer le formulaire pour nous grace à ngForm -->
+  <form #f="ngForm" (submit)="finalizeReservation(f.value)">
+    <mat-form-field>
+        <input matInput type="text" name="firstName" [(ngModel)]="client.firstName" placeholder="Prénom">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="lastName" [(ngModel)]="client.lastName" placeholder="Nom">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="email" [(ngModel)]="client.email" placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="phone" [(ngModel)]="client.phone" placeholder="Téléphone">
+    </mat-form-field>
+    <button mat-button type="submit">Réserver</button>
+  </form>
+
+  <!-- {{ f.controls.firstName?.value }} -->
+</div>
+
+<!-- 1ere methode : Formulaire simple
+
+<form [formGroup]="reservationForm">
+  <input type="date" formControlName="date">
+  <select formControlName="time">
+    <option *ngFor="let to of timeOptions">{{ to }}</option>
+  </select>
+  <select formControlName="people">
+      <option *ngFor="let po of peopleOptions">{{ po }}</option>
+  </select>
 </form>
+
+{{ reservationForm.value | json }} -->
