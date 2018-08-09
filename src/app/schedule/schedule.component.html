@@ -1,3 +1,27 @@
-<p>
-  schedule works!
-</p>
+<!-- <div>
+  <input type="text" [formControl]="searchTerm" placeholder="Jeu, karaoké, sport...">
+</div>
+{{ result | json }}
+ -->
+
+<h2>Soirées à thème</h2>
+<form>
+  <mat-form-field>
+    <input matInput [formControl]="searchTerm" placeholder="Jeu, karaoké, sport...">
+  </mat-form-field>
+</form>
+
+
+<div *ngIf="result.length > 0">
+  <mat-card *ngFor="let res of result">
+    <mat-card-header>
+      <mat-card-title>{{ res.title }}</mat-card-title>
+      <mat-card-subtitle>{{ res.date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ res.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

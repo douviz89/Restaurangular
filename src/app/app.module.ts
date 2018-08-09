@@ -4,6 +4,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
+
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -78,6 +80,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],
